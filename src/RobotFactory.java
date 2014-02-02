@@ -69,7 +69,7 @@ public class RobotFactory {
 
 		while (!proposal) {
 
-			int myid = rnd.nextInt(robots.size() - 1) + 1;
+			int myid = rnd.nextInt(robots.size()) + 1;
 
 			Robot r = findById(myid);
 
