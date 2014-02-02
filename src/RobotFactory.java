@@ -54,12 +54,6 @@ public class RobotFactory {
 							gender ? generator.nextMaleName()
 									: generator.nextFemaleName(), father, r);
 
-					System.out.println(r.getFirstName() + " " + r.getLastName()
-							+ " gave birth to a child of "
-							+ father.getFirstName() + " "
-							+ father.getLastName() + ": "
-							+ child.getFirstName() + " " + child.getLastName() + ".");
-
 					children.add(child);
 				}
 			}

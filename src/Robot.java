@@ -37,6 +37,10 @@ public class Robot {
 		dead = false;
 		married = false;
 		pregnant = false;
+
+		System.out.println(mother.getFirstName() + " " + mother.getLastName()
+				+ " gave birth to a child of " + father.getFirstName() + " "
+				+ father.getLastName() + ": " + firstName + ".");
 	}
 
 	private Random rnd;
