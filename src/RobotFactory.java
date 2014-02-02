@@ -39,7 +39,11 @@ public class RobotFactory {
 				}
 
 				if (r.isMarried() && r.isMale()) {
-					r.proposeSex(findById(r.getSpouseId()));
+					Robot wife = findById(r.getSpouseId());
+					
+					if (!wife.isDead()) {
+						r.proposeSex(wife);
+					}
 				}
 
 				if (r.isPregnant()) {
