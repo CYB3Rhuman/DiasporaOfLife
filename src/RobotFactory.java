@@ -40,7 +40,7 @@ public class RobotFactory {
 
 				if (r.isMarried() && r.isMale()) {
 					Robot wife = findById(r.getSpouseId());
-					
+
 					if (!wife.isDead()) {
 						r.proposeSex(wife);
 					}
@@ -50,9 +50,10 @@ public class RobotFactory {
 					boolean gender = r.getChildGender();
 					Robot father = findById(r.getSpouseId());
 
-					Robot child = new Robot(robots.size() + children.size() + 1, gender,
-							gender ? generator.nextMaleName()
-									: generator.nextFemaleName(), father, r);
+					Robot child = new Robot(
+							robots.size() + children.size() + 1, gender,
+							gender ? generator.nextMaleName() : generator
+									.nextFemaleName(), father, r);
 
 					children.add(child);
 				}
