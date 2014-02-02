@@ -1,6 +1,29 @@
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+## Java
 *.class
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
+## ant specific
+/dist/
+/build/
+
+## NetBeans specific 
+/manifest.mf
+/build.xml
+/nbproject/
+
+## Eclipse specific
+/.classpath
+/.project
+/.settings/
+/bin/
