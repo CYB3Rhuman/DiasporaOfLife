@@ -96,8 +96,7 @@ public class RobotFactory {
 		String robotsStr = "";
 
 		for (Robot r : robots) {
-			robotsStr += "<" + r.getId() + ">: " + r.getFirstName() + " "
-					+ r.getLastName() + " (" + r.getAge() + ")\n";
+			robotsStr += r.toString() + "\n";
 		}
 
 		return robotsStr;

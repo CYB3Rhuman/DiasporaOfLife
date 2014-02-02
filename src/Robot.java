@@ -168,4 +168,10 @@ public class Robot {
 			return false;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return (dead ? "-" : "<") + id + (dead ? "-" : ">") + ": " + firstName
+				+ " " + lastName + " (" + (male ? "m" : "f") + ", " + age + ")";
+	}
 }
