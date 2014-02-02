@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Robot {
 
-	public Robot(int id, boolean male, String firstName, String lastName) {
+	public Robot(int id, Gender gender, String firstName, String lastName) {
 		rnd = new Random();
 
 		this.id = id;
-		this.male = male;
+		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = lastName;
 
@@ -20,12 +20,12 @@ public class Robot {
 		pregnant = false;
 	}
 
-	public Robot(int id, boolean male, String firstName, Robot father,
+	public Robot(int id, Gender gender, String firstName, Robot father,
 			Robot mother) {
 		rnd = new Random();
 
 		this.id = id;
-		this.male = male;
+		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = father.getLastName();
 
@@ -49,7 +49,7 @@ public class Robot {
 	private String firstName, lastName;
 	private int age;
 
-	private boolean male;
+	private Gender gender;
 
 	private int fatherId, motherId;
 	private int spouseId;
@@ -76,8 +76,8 @@ public class Robot {
 		return lastName;
 	}
 
-	public boolean isMale() {
-		return male;
+	public Gender getGender() {
+		return gender;
 	}
 
 	public boolean isDead() {
@@ -167,19 +167,20 @@ public class Robot {
 		}
 	}
 
-	public boolean getChildGender() {
+	public Gender getChildGender() {
 		pregnant = false;
 
 		if (rnd.nextInt(100) > 50) { // 50%
-			return true;
+			return Gender.MALE;
 		} else {
-			return false;
+			return Gender.FEMALE;
 		}
 	}
 
 	@Override
 	public String toString() {
 		return (dead ? "-" : "<") + id + (dead ? "-" : ">") + ": " + firstName
-				+ " " + lastName + " (" + (male ? "m" : "f") + ", " + age + ")";
+				+ " " + lastName + " (" + (gender == Gender.MALE ? "m" : "f")
+				+ ", " + age + ")";
 	}
 }

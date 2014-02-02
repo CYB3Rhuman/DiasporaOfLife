@@ -15,16 +15,16 @@ public class RobotFactory {
 	List<Robot> robots = new ArrayList<Robot>();
 
 	public void init() {
-		robots.add(new Robot(1, true, generator.nextMaleName(), generator
-				.nextSurname()));
-		robots.add(new Robot(2, true, generator.nextMaleName(), generator
-				.nextSurname()));
-		robots.add(new Robot(3, true, generator.nextMaleName(), generator
-				.nextSurname()));
-		robots.add(new Robot(4, false, generator.nextFemaleName(), generator
-				.nextSurname()));
-		robots.add(new Robot(5, false, generator.nextFemaleName(), generator
-				.nextSurname()));
+		robots.add(new Robot(1, Gender.MALE, generator.nextMaleName(),
+				generator.nextSurname()));
+		robots.add(new Robot(2, Gender.MALE, generator.nextMaleName(),
+				generator.nextSurname()));
+		robots.add(new Robot(3, Gender.MALE, generator.nextMaleName(),
+				generator.nextSurname()));
+		robots.add(new Robot(4, Gender.FEMALE, generator.nextFemaleName(),
+				generator.nextSurname()));
+		robots.add(new Robot(5, Gender.FEMALE, generator.nextFemaleName(),
+				generator.nextSurname()));
 	}
 
 	public void turn() {
@@ -34,11 +34,11 @@ public class RobotFactory {
 			r.incrementAge();
 
 			if (!r.isDead() && r.getAge() >= 18) {
-				if (!r.isMarried() && r.isMale()) {
+				if (!r.isMarried() && r.getGender() == Gender.MALE) {
 					findPartner(r);
 				}
 
-				if (r.isMarried() && r.isMale()) {
+				if (r.isMarried() && r.getGender() == Gender.MALE) {
 					Robot wife = findById(r.getSpouseId());
 
 					if (!wife.isDead()) {
@@ -47,13 +47,13 @@ public class RobotFactory {
 				}
 
 				if (r.isPregnant()) {
-					boolean gender = r.getChildGender();
+					Gender gender = r.getChildGender();
 					Robot father = findById(r.getSpouseId());
 
 					Robot child = new Robot(
 							robots.size() + children.size() + 1, gender,
-							gender ? generator.nextMaleName() : generator
-									.nextFemaleName(), father, r);
+							gender == Gender.MALE ? generator.nextMaleName()
+									: generator.nextFemaleName(), father, r);
 
 					children.add(child);
 				}
@@ -72,7 +72,8 @@ public class RobotFactory {
 
 			Robot r = findById(myid);
 
-			if (!r.isDead() && r.getAge() >= 17 && r.isMale() != r1.isMale()) {
+			if (!r.isDead() && r.getAge() >= 17
+					&& r.getGender() != r1.getGender()) {
 				r1.proposeMarriage(r);
 
 				proposal = true;
