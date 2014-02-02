@@ -73,8 +73,6 @@ public class RobotFactory {
 
 			Robot r = findById(myid);
 
-                        //System.out.print(r1.getId() + " -> " + myid);
-                        //System.out.println(" " + r.getId());
 			if (!r.isDead() && r.getAge() >= 17 && r.isMale() != r1.isMale()) {
 				r1.proposeMarriage(r);
 

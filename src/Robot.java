@@ -93,11 +93,11 @@ public class Robot {
 			age++;
 
 			if (age > 90) {
-				if (rnd.nextInt(100) > 50) {
+				if (rnd.nextInt(100) > 50) { // 50%
 					die();
 				}
 			} else if (age > 60) {
-				if (rnd.nextInt(100) < 2) {
+				if (rnd.nextInt(100) < 2) {  // 3%
 					die();
 				}
 			}
@@ -111,7 +111,7 @@ public class Robot {
 	}
 
 	public void proposeMarriage(Robot f) {
-		if (!f.isMarried() && rnd.nextInt(100) > 50) {
+		if (!f.isMarried() && rnd.nextInt(100) > 50) { // 50%
 			System.out.println(f.firstName + " " + f.lastName
 					+ " agreed to marry " + getFirstName() + " "
 					+ getLastName() + ".");
@@ -134,7 +134,7 @@ public class Robot {
 	}
 
 	public void proposeSex(Robot f) {
-		if (rnd.nextInt(100) > 50) {
+		if (rnd.nextInt(100) > 50) { // 50%
 			System.out.println(f.firstName + " " + f.lastName
 					+ " had sex with " + getFirstName() + " " + getLastName()
 					+ ".");
@@ -147,7 +147,7 @@ public class Robot {
 	}
 
 	private void inpregnate(Robot m) {
-		if (rnd.nextInt(100) > 80) {
+		if (rnd.nextInt(100) > 80) { // 20%
 			isPregnant = true;
 
 			System.out.println(m.firstName + " " + m.lastName + " inpregnated "
@@ -162,7 +162,7 @@ public class Robot {
 	public boolean getChildGender() {
 		isPregnant = false;
 
-		if (rnd.nextInt(100) > 50) {
+		if (rnd.nextInt(100) > 50) { // 50%
 			return true;
 		} else {
 			return false;
