@@ -93,11 +93,11 @@ public class Robot {
 			age++;
 
 			if (age > 90) {
-				if (rnd.nextInt(100) > 50) { // 50%
+				if (rnd.nextInt(100) > 90) { // 10%
 					die();
 				}
 			} else if (age > 60) {
-				if (rnd.nextInt(100) < 2) {  // 3%
+				if (rnd.nextInt(100) < 2) { // 3% (or is it?)
 					die();
 				}
 			}
