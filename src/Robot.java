@@ -97,7 +97,11 @@ public class Robot {
 					die();
 				}
 			} else if (age > 60) {
-				if (rnd.nextInt(100) < 2) { // 3% (or is it?)
+				if (rnd.nextInt(100) < 2) { // 2%
+					die();
+				}
+			} else {
+				if (rnd.nextInt(1000) == 666) { // 0.1%
 					die();
 				}
 			}
