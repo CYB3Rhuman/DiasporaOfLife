@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Robot {
 
-	public Robot(int id, boolean isMale, String firstName, String lastName) {
+	public Robot(int id, boolean male, String firstName, String lastName) {
 		rnd = new Random();
 
 		this.id = id;
-		this.isMale = isMale;
+		this.male = male;
 		this.firstName = firstName;
 		this.lastName = lastName;
 
@@ -15,17 +15,17 @@ public class Robot {
 		motherId = 0;
 		spouseId = 0;
 
-		isDead = false;
-		isMarried = false;
-		isPregnant = false;
+		dead = false;
+		married = false;
+		pregnant = false;
 	}
 
-	public Robot(int id, boolean isMale, String firstName, Robot father,
+	public Robot(int id, boolean male, String firstName, Robot father,
 			Robot mother) {
 		rnd = new Random();
 
 		this.id = id;
-		this.isMale = isMale;
+		this.male = male;
 		this.firstName = firstName;
 		this.lastName = father.getLastName();
 
@@ -34,9 +34,9 @@ public class Robot {
 		motherId = mother.getId();
 		spouseId = 0;
 
-		isDead = false;
-		isMarried = false;
-		isPregnant = false;
+		dead = false;
+		married = false;
+		pregnant = false;
 	}
 
 	private Random rnd;
@@ -45,12 +45,12 @@ public class Robot {
 	private String firstName, lastName;
 	private int age;
 
-	private boolean isMale;
+	private boolean male;
 
 	private int fatherId, motherId;
 	private int spouseId;
 
-	private boolean isDead, isMarried, isPregnant;
+	private boolean dead, married, pregnant;
 
 	public int getId() {
 		return id;
@@ -73,23 +73,23 @@ public class Robot {
 	}
 
 	public boolean isMale() {
-		return isMale;
+		return male;
 	}
 
 	public boolean isDead() {
-		return isDead;
+		return dead;
 	}
 
 	public boolean isPregnant() {
-		return isPregnant;
+		return pregnant;
 	}
 
 	public boolean isMarried() {
-		return isMarried;
+		return married;
 	}
 
 	public void incrementAge() {
-		if (!isDead) {
+		if (!dead) {
 			age++;
 
 			if (age > 90) {
@@ -105,7 +105,7 @@ public class Robot {
 	}
 
 	public void die() {
-		isDead = true;
+		dead = true;
 		System.out.println(firstName + " " + lastName + " died (age " + age
 				+ ").");
 	}
@@ -116,7 +116,7 @@ public class Robot {
 					+ " agreed to marry " + getFirstName() + " "
 					+ getLastName() + ".");
 
-			isMarried = true;
+			married = true;
 			spouseId = f.getId();
 
 			f.marry(this);
@@ -129,7 +129,7 @@ public class Robot {
 
 	private void marry(Robot m) {
 		lastName = m.getLastName();
-		isMarried = true;
+		married = true;
 		spouseId = m.getId();
 	}
 
@@ -148,7 +148,7 @@ public class Robot {
 
 	private void inpregnate(Robot m) {
 		if (rnd.nextInt(100) > 80) { // 20%
-			isPregnant = true;
+			pregnant = true;
 
 			System.out.println(m.firstName + " " + m.lastName + " inpregnated "
 					+ getFirstName() + " " + getLastName() + ".");
@@ -160,7 +160,7 @@ public class Robot {
 	}
 
 	public boolean getChildGender() {
-		isPregnant = false;
+		pregnant = false;
 
 		if (rnd.nextInt(100) > 50) { // 50%
 			return true;
