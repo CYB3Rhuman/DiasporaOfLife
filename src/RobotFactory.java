@@ -113,4 +113,20 @@ public class RobotFactory {
 
 		return robotsStr;
 	}
+
+	public String generateHTML() {
+		String html = "<!DOCTYPE html>\n";
+
+		html += "<html>\n";
+		html += "<head><title>Blogs</title></head>\n";
+		html += "<body>\n\n";
+
+		for (Robot r : robots) {
+			html += r.getBlog().getHTML();
+		}
+
+		html += "</body>\n</html>\n";
+
+		return html;
+	}
 }

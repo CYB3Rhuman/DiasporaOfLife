@@ -18,6 +18,10 @@ public class Robot {
 		dead = false;
 		married = false;
 		pregnant = false;
+
+		blog = new Page(this);
+		blog.addPost("I entered this world as a pioner. And I'm "
+				+ (gender == Gender.MALE ? "" : "fe") + "male.");
 	}
 
 	public Robot(int id, Gender gender, String firstName, Robot father,
@@ -38,6 +42,10 @@ public class Robot {
 		married = false;
 		pregnant = false;
 
+		blog = new Page(this);
+		blog.addPost("I was born. And I'm "
+				+ (gender == Gender.MALE ? "" : "fe") + "male.");
+
 		System.out.println(mother.getFirstName() + " " + mother.getLastName()
 				+ " gave birth to a child of " + father.getFirstName() + " "
 				+ father.getLastName() + ": " + firstName + ".");
@@ -55,6 +63,8 @@ public class Robot {
 	private int spouseId;
 
 	private boolean dead, married, pregnant;
+
+	private Page blog;
 
 	public int getId() {
 		return id;
@@ -114,6 +124,8 @@ public class Robot {
 
 	public void die() {
 		dead = true;
+
+		blog.addPost("I died. I was " + age + ".");
 		System.out.println(firstName + " " + lastName + " died (age " + age
 				+ ").");
 	}
@@ -170,11 +182,17 @@ public class Robot {
 	public Gender getChildGender() {
 		pregnant = false;
 
+		blog.addPost("I gave birth to a child.");
+
 		if (rnd.nextInt(100) > 50) { // 50%
 			return Gender.MALE;
 		} else {
 			return Gender.FEMALE;
 		}
+	}
+
+	public Page getBlog() {
+		return blog;
 	}
 
 	@Override
