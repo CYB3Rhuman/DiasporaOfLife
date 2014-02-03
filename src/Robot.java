@@ -181,6 +181,6 @@ public class Robot {
 	public String toString() {
 		return (dead ? "-" : "<") + id + (dead ? "-" : ">") + ": " + firstName
 				+ " " + lastName + " (" + (gender == Gender.MALE ? "m" : "f")
-				+ ", " + age + ")";
+				+ ", " + age + (married ? ", married" : "") + ")";
 	}
 }
