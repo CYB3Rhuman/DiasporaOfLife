@@ -62,11 +62,21 @@ public class RobotFactory {
 		robots.addAll(children);
 	}
 
+	public boolean isStopped() {
+		for (Robot r : robots) {
+			if (!r.isDead()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private void findPartner(Robot r1) {
 
 		boolean proposal = false;
+		int iteration = 0;
 
-		while (!proposal) {
+		while (!proposal && iteration < 50) {
 
 			int myid = rnd.nextInt(robots.size()) + 1;
 
@@ -78,6 +88,8 @@ public class RobotFactory {
 
 				proposal = true;
 			}
+
+			iteration++;
 		}
 	}
 

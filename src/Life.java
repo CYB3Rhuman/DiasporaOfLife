@@ -8,10 +8,9 @@ public class Life {
 
 		factory.init();
 
-		while (true) {
+		while (!factory.isStopped()) {
 			factory.turn();
 			System.out.println(factory.listRobots());
-			System.in.read();
 		}
 	}
 
