@@ -14,7 +14,7 @@ public class RobotWorld {
 
 	List<Robot> robots = new ArrayList<Robot>();
 	
-	private int date = 0;
+	private int date = 2000;
 	
 	public int getDate() {
 		return date;
