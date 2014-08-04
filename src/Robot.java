@@ -22,7 +22,7 @@ public class Robot {
 		pregnant = false;
 
 		blog = new Page(this);
-		blog.addPost("I entered this world as a pioner. And I'm "
+		blog.addPost(world.getDate(), "I entered this world as a pioner. And I'm "
 				+ (gender == Gender.MALE ? "" : "fe") + "male.");
 	}
 
@@ -46,7 +46,7 @@ public class Robot {
 		pregnant = false;
 
 		blog = new Page(this);
-		blog.addPost("I was born. And I'm "
+		blog.addPost(world.getDate(), "I was born. And I'm "
 				+ (gender == Gender.MALE ? "" : "fe") + "male.");
 
 		System.out.println(mother.getFirstName() + " " + mother.getLastName()
@@ -134,7 +134,7 @@ public class Robot {
 	public void die() {
 		dead = true;
 
-		blog.addPost("I died. I was " + age + ".");
+		blog.addPost(world.getDate(), "I died. I was " + age + ".");
 		System.out.println(firstName + " " + lastName + " died (age " + age
 				+ ").");
 	}
@@ -191,7 +191,7 @@ public class Robot {
 	public Gender getChildGender() {
 		pregnant = false;
 
-		blog.addPost("I gave birth to a child.");
+		blog.addPost(world.getDate(), "I gave birth to a child.");
 
 		if (rnd.nextInt(100) > 50) { // 50%
 			return Gender.MALE;
