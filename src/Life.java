@@ -10,6 +10,7 @@ public class Life {
 
 		while (!factory.isStopped()) {
 			factory.turn();
+			System.out.println("Year " + factory.getDate() + ":");
 			System.out.println(factory.listRobots());
 		}
 	}
