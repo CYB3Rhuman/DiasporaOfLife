@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Life {
 
@@ -13,6 +14,10 @@ public class Life {
 			System.out.println("Year " + world.getDate() + ":");
 			System.out.println(world.listRobots());
 		}
+		
+		PrintWriter writer = new PrintWriter("blog.html", "UTF-8");
+		writer.print(world.generateHTML());
+		writer.close();
 	}
 
 }
