@@ -9,10 +9,16 @@ public class RobotFactory {
 	}
 
 	Random rnd;
-
+	
 	NameGenerator generator = new NameGenerator();
 
 	List<Robot> robots = new ArrayList<Robot>();
+	
+	private int date = 0;
+	
+	public int getDate() {
+		return date;
+	}
 
 	public void init() {
 		robots.add(new Robot(1, Gender.MALE, generator.nextMaleName(),
@@ -28,6 +34,8 @@ public class RobotFactory {
 	}
 
 	public void turn() {
+		date++;
+		
 		List<Robot> children = new ArrayList<Robot>();
 
 		for (Robot r : robots) {
