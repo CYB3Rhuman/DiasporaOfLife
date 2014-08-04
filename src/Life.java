@@ -4,14 +4,14 @@ public class Life {
 
 	public static void main(String[] args) throws IOException {
 
-		RobotFactory factory = new RobotFactory();
+		RobotWorld world = new RobotWorld();
 
-		factory.init();
+		world.init();
 
-		while (!factory.isStopped()) {
-			factory.turn();
-			System.out.println("Year " + factory.getDate() + ":");
-			System.out.println(factory.listRobots());
+		while (!world.isStopped()) {
+			world.turn();
+			System.out.println("Year " + world.getDate() + ":");
+			System.out.println(world.listRobots());
 		}
 	}
 

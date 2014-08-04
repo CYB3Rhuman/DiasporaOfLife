@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RobotFactory {
+public class RobotWorld {
 
-	public RobotFactory() {
+	public RobotWorld() {
 		rnd = new Random();
 	}
 
