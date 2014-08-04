@@ -2,13 +2,15 @@ import java.util.Random;
 
 public class Robot {
 
-	public Robot(int id, Gender gender, String firstName, String lastName) {
+	public Robot(int id, Gender gender, String firstName, String lastName,
+			RobotWorld world) {
 		rnd = new Random();
 
 		this.id = id;
 		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.world = world;
 
 		age = 16;
 		fatherId = 0;
@@ -25,13 +27,14 @@ public class Robot {
 	}
 
 	public Robot(int id, Gender gender, String firstName, Robot father,
-			Robot mother) {
+			Robot mother, RobotWorld world) {
 		rnd = new Random();
 
 		this.id = id;
 		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = father.getLastName();
+		this.world = world;
 
 		age = 0;
 		fatherId = father.getId();
@@ -50,6 +53,8 @@ public class Robot {
 				+ " gave birth to a child of " + father.getFirstName() + " "
 				+ father.getLastName() + ": " + firstName + ".");
 	}
+
+	private RobotWorld world;
 
 	private Random rnd;
 
@@ -120,6 +125,10 @@ public class Robot {
 				}
 			}
 		}
+	}
+	
+	public void update(RobotWorld world) {
+		this.world = world;
 	}
 
 	public void die() {

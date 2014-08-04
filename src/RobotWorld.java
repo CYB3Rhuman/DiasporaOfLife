@@ -22,15 +22,15 @@ public class RobotWorld {
 
 	public void init() {
 		robots.add(new Robot(1, Gender.MALE, generator.nextMaleName(),
-				generator.nextSurname()));
+				generator.nextSurname(), this));
 		robots.add(new Robot(2, Gender.MALE, generator.nextMaleName(),
-				generator.nextSurname()));
+				generator.nextSurname(), this));
 		robots.add(new Robot(3, Gender.MALE, generator.nextMaleName(),
-				generator.nextSurname()));
+				generator.nextSurname(), this));
 		robots.add(new Robot(4, Gender.FEMALE, generator.nextFemaleName(),
-				generator.nextSurname()));
+				generator.nextSurname(), this));
 		robots.add(new Robot(5, Gender.FEMALE, generator.nextFemaleName(),
-				generator.nextSurname()));
+				generator.nextSurname(), this));
 	}
 
 	public void turn() {
@@ -40,6 +40,7 @@ public class RobotWorld {
 
 		for (Robot r : robots) {
 			r.incrementAge();
+			r.update(this);
 
 			if (!r.isDead() && r.getAge() >= 18) {
 				if (!r.isMarried() && r.getGender() == Gender.MALE) {
@@ -61,7 +62,7 @@ public class RobotWorld {
 					Robot child = new Robot(
 							robots.size() + children.size() + 1, gender,
 							gender == Gender.MALE ? generator.nextMaleName()
-									: generator.nextFemaleName(), father, r);
+									: generator.nextFemaleName(), father, r, this);
 
 					children.add(child);
 				}
