@@ -12,7 +12,7 @@ public class Robot {
 		this.lastName = lastName;
 		this.world = world;
 
-		age = 16;
+		age = rnd.nextInt(10) + 15;
 		fatherId = 0;
 		motherId = 0;
 		spouseId = 0;
@@ -23,7 +23,7 @@ public class Robot {
 
 		blog = new Page(this);
 		blog.addPost(world.getDate(), "I entered this world as a pioner. And I'm "
-				+ (gender == Gender.MALE ? "" : "fe") + "male.");
+				+ (gender == Gender.MALE ? "" : "fe") + "male, " + age + ".");
 	}
 
 	public Robot(int id, Gender gender, String firstName, Robot father,
