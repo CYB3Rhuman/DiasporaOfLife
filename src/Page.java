@@ -1,11 +1,11 @@
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.TreeMap;
 
 public class Page {
 
 	String title;
-	Map<Integer, String> posts = new HashMap<>();
+	Map<Integer, String> posts = new TreeMap<>();
 
 	public Page(Robot owner) {
 		title = owner.getFirstName() + " " + owner.getLastName();
