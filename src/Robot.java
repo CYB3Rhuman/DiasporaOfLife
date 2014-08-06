@@ -127,10 +127,6 @@ public class Robot {
 		}
 	}
 	
-	public void update(RobotWorld world) {
-		this.world = world;
-	}
-
 	public void die() {
 		dead = true;
 

@@ -40,7 +40,6 @@ public class RobotWorld {
 
 		for (Robot r : robots) {
 			r.incrementAge();
-			r.update(this);
 
 			if (!r.isDead() && r.getAge() >= 18) {
 				if (!r.isMarried() && r.getGender() == Gender.MALE) {
