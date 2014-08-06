@@ -19,6 +19,10 @@ public class RobotWorld {
 	public int getDate() {
 		return date;
 	}
+	
+	public Random getRandom() {
+		return rnd;
+	}
 
 	public void init() {
 		robots.add(new Robot(1, Gender.MALE, generator.nextMaleName(),

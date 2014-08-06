@@ -4,13 +4,12 @@ public class Robot {
 
 	public Robot(int id, Gender gender, String firstName, String lastName,
 			RobotWorld world) {
-		rnd = new Random();
-
 		this.id = id;
 		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.world = world;
+		rnd = world.getRandom();
 
 		age = rnd.nextInt(10) + 15;
 		fatherId = 0;
@@ -28,13 +27,12 @@ public class Robot {
 
 	public Robot(int id, Gender gender, String firstName, Robot father,
 			Robot mother, RobotWorld world) {
-		rnd = new Random();
-
 		this.id = id;
 		this.gender = gender;
 		this.firstName = firstName;
 		this.lastName = father.getLastName();
 		this.world = world;
+		rnd = world.getRandom();
 
 		age = 0;
 		fatherId = father.getId();
@@ -55,7 +53,6 @@ public class Robot {
 	}
 
 	private RobotWorld world;
-
 	private Random rnd;
 
 	private int id;
