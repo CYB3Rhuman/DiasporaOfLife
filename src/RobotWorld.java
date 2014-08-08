@@ -9,17 +9,18 @@ public class RobotWorld {
 	}
 
 	Random rnd;
-	
+
 	NameGenerator generator = new NameGenerator();
 
 	List<Robot> robots = new ArrayList<Robot>();
-	
+	List<Robot> children = new ArrayList<Robot>();
+
 	private int date = 2000;
-	
+
 	public int getDate() {
 		return date;
 	}
-	
+
 	public Random getRandom() {
 		return rnd;
 	}
@@ -39,39 +40,20 @@ public class RobotWorld {
 
 	public void turn() {
 		date++;
-		
-		List<Robot> children = new ArrayList<Robot>();
+
+		children = new ArrayList<Robot>();
 
 		for (Robot r : robots) {
-			r.incrementAge();
-
-			if (!r.isDead() && r.getAge() >= 18) {
-				if (!r.isMarried() && r.getGender() == Gender.MALE) {
-					findPartner(r);
-				}
-
-				if (r.isMarried() && r.getGender() == Gender.MALE) {
-					Robot wife = findById(r.getSpouseId());
-
-					if (!wife.isDead()) {
-						r.proposeSex(wife);
-					}
-				}
-
-				if (r.isPregnant()) {
-					Gender gender = r.getChildGender();
-					Robot father = findById(r.getSpouseId());
-
-					Robot child = new Robot(
-							robots.size() + children.size() + 1, gender,
-							gender == Gender.MALE ? generator.nextMaleName()
-									: generator.nextFemaleName(), father, r, this);
-
-					children.add(child);
-				}
-			}
+			r.turn();
 		}
+
 		robots.addAll(children);
+	}
+
+	public void addChild(Gender gender, Robot father, Robot mother) {
+		children.add(new Robot(robots.size() + children.size() + 1, gender,
+				gender == Gender.MALE ? generator.nextMaleName() : generator
+						.nextFemaleName(), father, mother, this));
 	}
 
 	public boolean isStopped() {
@@ -83,7 +65,7 @@ public class RobotWorld {
 		return true;
 	}
 
-	private void findPartner(Robot r1) {
+	public void findPartner(Robot r1) {
 
 		boolean proposal = false;
 		int iteration = 0;
@@ -92,7 +74,7 @@ public class RobotWorld {
 
 			int myid = rnd.nextInt(robots.size()) + 1;
 
-			Robot r = findById(myid);
+			Robot r = getRobot(myid);
 
 			if (!r.isDead() && r.getAge() >= 17
 					&& r.getGender() != r1.getGender()) {
@@ -105,9 +87,8 @@ public class RobotWorld {
 		}
 	}
 
-	private Robot findById(int id) {
+	public Robot getRobot(int id) {
 		for (Robot r : robots) {
-
 			if (r.getId() == id) {
 				return r;
 			}

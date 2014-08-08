@@ -103,6 +103,31 @@ public class Robot {
 	public boolean isMarried() {
 		return married;
 	}
+	
+	public void turn() {
+		incrementAge();
+
+		if (!isDead() && getAge() >= 18) {
+			if (!isMarried() && getGender() == Gender.MALE) {
+				world.findPartner(this);
+			}
+
+			if (isMarried() && getGender() == Gender.MALE) {
+				Robot wife = world.getRobot(getSpouseId());
+
+				if (!wife.isDead()) {
+					proposeSex(wife);
+				}
+			}
+
+			if (isPregnant()) {
+				Gender gender = getChildGender();
+				Robot father = world.getRobot(getSpouseId());
+				world.addChild(gender, father, this);
+			}
+		}
+
+	}
 
 	public void incrementAge() {
 		if (!dead) {
